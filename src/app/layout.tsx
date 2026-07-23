@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 	title: seo.title,
 	description: seo.description,
 	keywords: seo.keywords,
-	metadataBase: seo.metadataBase ? new URL(seo.metadataBase.toString()) : undefined,
+	metadataBase: seo.metadataBase,
 	creator: seo.creator,
 	authors: seo.authors,
 	openGraph: seo.openGraph,

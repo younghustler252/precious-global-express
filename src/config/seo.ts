@@ -1,4 +1,4 @@
-import { Metadata } from "next"; 
+import type { Metadata } from "next";
 import { company } from "./company";
 
 export const seo: Metadata = {
@@ -22,20 +22,41 @@ export const seo: Metadata = {
 		"express delivery Nigeria",
 	],
 
-	// ✅ Correct Next.js property implementation
-	metadataBase: new URL("https://preciousglobalexpress.com"),
+	metadataBase: new URL(company.website),
+
+
 	alternates: {
 		canonical: "/",
 	},
 
 	creator: company.name,
 
-	authors: [{ name: company.name }],
+	authors: [
+		{
+			name: company.name,
+		},
+	],
+
+	applicationName: company.name,
+
+	category: "Logistics",
+
+	robots: {
+		index: true,
+		follow: true,
+	},
+
+	icons: {
+		icon: company.branding.favicon,
+		apple: company.branding.appleTouchIcon,
+	},
 
 	openGraph: {
 		type: "website",
 		locale: "en_NG",
 		siteName: company.name,
+		title: `${company.name} | ${company.slogan}`,
+		description: company.description,
 		images: [
 			{
 				url: company.branding.logo,
@@ -48,7 +69,11 @@ export const seo: Metadata = {
 
 	twitter: {
 		card: "summary_large_image",
-		images: [company.branding.logo],
+		title: company.name,
+		description: company.description,
+		images: [
+			company.branding.logo,
+		],
 	},
 };
 

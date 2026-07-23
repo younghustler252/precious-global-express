@@ -7,6 +7,8 @@ export const company = {
     shortName: "PGE",
 
     legalName: "Precious Global Express Limited",
+    website: "https://preciousglobalexpress.com",
+
 
     tagline: "Delivering the World with Speed, Security & Excellence.",
 
