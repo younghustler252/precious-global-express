@@ -1,26 +1,272 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	/* ============================
+		FONTS
+	============================ */
+
+	--font-display: "Playfair Display", serif;
+	--font-sans: "Inter", sans-serif;
+
+
+	/* ============================
+		BRAND COLORS
+	============================ */
+
+	--color-navy: oklch(0.28 0.09 265);
+	--color-navy-deep: oklch(0.20 0.08 265);
+	--color-navy-dark: oklch(0.14 0.06 265);
+
+	--color-gold: oklch(0.78 0.13 85);
+	--color-gold-bright: oklch(0.85 0.15 85);
+
+	--color-white: oklch(1 0 0);
+	--color-silver: oklch(0.92 0.01 240);
+	--color-gray: oklch(0.55 0.02 260);
+	--color-ink: oklch(0.14 0.02 260);
+
+
+	/* ============================
+		THEME
+	============================ */
+
+	--background: var(--color-white);
+	--foreground: var(--color-ink);
+
+	--surface: oklch(0.985 0 0);
+	--surface-dark: var(--color-navy);
+
+	--border: var(--color-silver);
+	--muted: var(--color-gray);
+
+
+	/* ============================
+		RADIUS
+	============================ */
+
+	--radius-sm: .5rem;
+	--radius-md: .75rem;
+	--radius-lg: 1rem;
+	--radius-xl: 1.5rem;
+	--radius-full: 9999px;
+
+
+	/* ============================
+		SHADOWS
+	============================ */
+
+	--shadow-luxe: 0 30px 80px -30px oklch(0.20 0.08 265 / .55);
+	--shadow-gold: 0 20px 60px -20px oklch(0.78 0.13 85 / .45);
+
+
+	/* ============================
+		CONTAINER
+	============================ */
+
+	--container: 80rem;
+
+
+	/* ============================
+		ANIMATIONS
+	============================ */
+
+	--animate-fade-in: fade-in .6s ease-out both;
+	--animate-slide-up: slide-up .5s ease-out both;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+/* ============================
+	DARK MODE
+============================ */
+
+.dark {
+	--background: var(--color-navy-dark);
+	--foreground: var(--color-white);
+
+	--surface: var(--color-navy);
+	--border: oklch(1 0 0 / .1);
+
+	--muted: oklch(0.70 0.03 260);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+/* ============================
+	BASE
+============================ */
+
+@layer base {
+	* {
+		box-sizing: border-box;
+		border-color: var(--border);
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		font-family: var(--font-sans);
+		background: var(--background);
+		color: var(--foreground);
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-display);
+		font-weight: 700;
+		line-height: 1.1;
+	}
+
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+
+	img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+
+	button {
+		cursor: pointer;
+	}
+}
+
+
+/* ============================
+	UTILITIES
+============================ */
+
+@layer utilities {
+	.container-page {
+		margin-inline: auto;
+		max-width: var(--container);
+		padding-inline: 1.5rem;
+	}
+
+	.section {
+		padding-block: 6rem;
+	}
+
+	.section-sm {
+		padding-block: 4rem;
+	}
+
+	.section-lg {
+		padding-block: 8rem;
+	}
+
+
+	/* Backgrounds */
+
+	.bg-navy {
+		background: var(--color-navy);
+	}
+
+	.bg-navy-deep {
+		background: var(--color-navy-deep);
+	}
+
+	.bg-navy-dark {
+		background: var(--color-navy-dark);
+	}
+
+	.bg-gold {
+		background: var(--color-gold);
+	}
+
+	.bg-surface {
+		background: var(--surface);
+	}
+
+
+	/* Text */
+
+	.text-gold {
+		color: var(--color-gold);
+	}
+
+	.text-gold-bright {
+		color: var(--color-gold-bright);
+	}
+
+	.text-muted {
+		color: var(--muted);
+	}
+
+
+	/* Borders */
+
+	.border-default {
+		border: 1px solid var(--border);
+	}
+
+
+	/* Radius */
+
+	.rounded-brand {
+		border-radius: var(--radius-lg);
+	}
+
+
+	/* Shadows */
+
+	.shadow-luxe {
+		box-shadow: var(--shadow-luxe);
+	}
+
+	.shadow-gold {
+		box-shadow: var(--shadow-gold);
+	}
+
+
+	/* Glass */
+
+	.glass {
+		backdrop-filter: blur(20px);
+		background: oklch(1 0 0 / .65);
+		border: 1px solid oklch(1 0 0 / .2);
+	}
+
+
+	/* Helpers */
+
+	.text-balance {
+		text-wrap: balance;
+	}
+}
+
+
+/* ============================
+	ANIMATIONS
+============================ */
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+
+@keyframes slide-up {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
