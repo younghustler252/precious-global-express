@@ -53,13 +53,13 @@ export default function Logo({
 				</div>
 			) : (
 				<Image
-					src={company.branding.logo}
-					width={imageSize}
-					height={imageSize}
-					alt={company.name}
-					className="h-auto w-auto object-contain"
-					onError={() => setError(true)}
-					priority
+				src={company.branding.logo}
+				alt={company.name}
+				width={imageSize}
+				height={imageSize}
+				className="h-11 w-11 object-contain shrink-0"
+				priority
+				unoptimized
 				/>
 			)}
 
