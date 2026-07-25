@@ -98,12 +98,12 @@ export default function QuoteForm() {
 		<section className="section bg-surface">
 			<div className="container-page">
 				<motion.div
-					initial={{ opacity: 0, y: 30 }}
-					whileInView={{ opacity: 0, y: 0 }}
-					viewport={{ once: true, margin: "-80px" }}
-					transition={{ duration: 0.6 }}
-					className="mx-auto max-w-3xl text-center"
-				>
+	initial={{ opacity: 0, y: 30 }}
+	whileInView={{ opacity: 1, y: 0 }}
+	viewport={{ once: true, margin: "-80px" }}
+	transition={{ duration: 0.6 }}
+	className="mx-auto max-w-3xl text-center"
+>
 					<p className="text-xs uppercase tracking-[0.3em] text-gold">
 						Request A Quote
 					</p>
