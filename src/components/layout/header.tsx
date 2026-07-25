@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
+import Link from "next/link";
 
 import Logo from "@/components/ui/logo";
 
@@ -36,11 +37,13 @@ export default function Header() {
 			}`}
 		>
 			<div className="container-page flex items-center justify-between">
-				<Logo />
+				<Link href="/">
+					<Logo />
+				</Link>
 
 				<nav className="hidden items-center gap-8 lg:flex">
 					{links.map(([label, href]) => (
-						<a
+						<Link
 							key={href}
 							href={href}
 							className="group relative text-sm text-navy-deep transition-colors hover:text-navy"
@@ -48,12 +51,12 @@ export default function Header() {
 							{label}
 
 							<span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all group-hover:w-full" />
-						</a>
+						</Link>
 					))}
 				</nav>
 
 				<div className="hidden lg:block">
-					<a
+					<Link
 						href="/quote"
 						className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-navy px-6 py-3 text-sm font-medium text-white shadow-luxe"
 					>
@@ -64,7 +67,7 @@ export default function Header() {
 						</span>
 
 						<ArrowRight className="relative z-10 h-4 w-4 transition-transform group-hover:translate-x-1" />
-					</a>
+					</Link>
 				</div>
 
 				<button
@@ -80,23 +83,23 @@ export default function Header() {
 				<div className="mt-4 border-t border-default bg-white px-6 py-6 shadow-luxe lg:hidden">
 					<div className="space-y-5">
 						{links.map(([label, href]) => (
-							<a
+							<Link
 								key={href}
 								href={href}
 								onClick={() => setOpen(false)}
 								className="block text-navy-deep transition-colors hover:text-gold"
 							>
 								{label}
-							</a>
+							</Link>
 						))}
 
-						<a
+						<Link
 							href="/quote"
 							onClick={() => setOpen(false)}
 							className="block rounded-full bg-navy py-3 text-center text-white"
 						>
 							Get a Quote
-						</a>
+						</Link>
 					</div>
 				</div>
 			)}

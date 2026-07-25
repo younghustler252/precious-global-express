@@ -8,14 +8,14 @@ const services = [
 	"Road Freight",
 	"Express",
 	"Customs",
-	"Warehousing",
+	// "Warehousing",
 ];
 
 const companyLinks = [
 	"About",
 	"Careers",
 	"Blog",
-	"Sustainability",
+	// "Sustainability",
 	"Partners",
 ];
 

@@ -7,9 +7,9 @@ import RouteAnimation from "../ui/route-animation";
 import { company } from "@/config/company";
 
 const stats = [
-	["120+", "Countries"],
-	["1.2M", "Shipments"],
-	["20+", "Years"],
+	["100+", "Countries"],
+	["1k", "Shipments"],
+	["5+", "Years"],
 	["99.7%", "On-time"],
 ];
 

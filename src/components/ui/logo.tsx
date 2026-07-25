@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Package } from "lucide-react";
 
 import { company } from "@/config/company";
-import { cn } from "@/app/lib/utils/cn";
+import { cn } from "@/lib/utils/cn";
 
 interface LogoProps {
 	className?: string;

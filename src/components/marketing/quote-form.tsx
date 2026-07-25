@@ -1,15 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
 	ArrowRight,
-	CheckCircle,
 	Globe,
 	ShieldCheck,
 	Truck,
+	MessageCircle,
+	Mail,
 } from "lucide-react";
 
 import { company } from "@/config/company";
+import { buildQuoteMessage } from "@/lib/quote-message";
 
 const services = [
 	"Air Freight",
@@ -39,12 +42,64 @@ const benefits = [
 ];
 
 export default function QuoteForm() {
+	const [form, setForm] = useState({
+		name: "",
+		companyName: "",
+		phone: "",
+		email: "",
+		service: "",
+		origin: "",
+		destination: "",
+		weight: "",
+		cargo: "",
+		date: "",
+		details: "",
+	});
+
+	const updateField = (
+		field: keyof typeof form,
+		value: string
+	) => {
+		setForm((prev) => ({
+			...prev,
+			[field]: value,
+		}));
+	};
+
+	const sendWhatsApp = () => {
+		const message = encodeURIComponent(
+			buildQuoteMessage(form)
+		);
+
+		window.open(
+			`${company.socials.whatsapp}?text=${message}`,
+			"_blank"
+		);
+	};
+
+	const sendEmail = () => {
+		try {
+			const subject = encodeURIComponent("Shipping Quote Request");
+			const body = encodeURIComponent(buildQuoteMessage(form));
+
+			const url = `mailto:${company.contact.email}?subject=${subject}&body=${body}`;
+
+			console.log("Mailto URL:", url);
+
+			window.location.href = url;
+
+			console.log("Mailto launched");
+		} catch (error) {
+			console.error("Failed to launch mailto:", error);
+		}
+	};
+
 	return (
 		<section className="section bg-surface">
 			<div className="container-page">
 				<motion.div
 					initial={{ opacity: 0, y: 30 }}
-					whileInView={{ opacity: 1, y: 0 }}
+					whileInView={{ opacity: 0, y: 0 }}
 					viewport={{ once: true, margin: "-80px" }}
 					transition={{ duration: 0.6 }}
 					className="mx-auto max-w-3xl text-center"
@@ -63,7 +118,6 @@ export default function QuoteForm() {
 					</p>
 				</motion.div>
 
-
 				<div className="mt-14 grid gap-8 lg:grid-cols-5">
 					<motion.div
 						initial={{ opacity: 0, x: -30 }}
@@ -77,33 +131,69 @@ export default function QuoteForm() {
 						</h2>
 
 						<p className="mt-2 text-sm text-muted">
-							Provide your cargo information and we will contact
-							you with a quotation.
+							Provide your cargo information and contact
+							preference.
 						</p>
 
-						<form className="mt-8 space-y-5">
+						<div className="mt-8 space-y-5">
 							<div className="grid gap-5 md:grid-cols-2">
 								<input
-									type="text"
 									placeholder="Full Name"
+									value={form.name}
+									onChange={(e) =>
+										updateField("name", e.target.value)
+									}
+									className="h-12 rounded-xl border-default bg-surface px-4 text-sm outline-none focus:border-gold"
+								/>
+
+								<input
+									placeholder="Company Name (Optional)"
+									value={form.companyName}
+									onChange={(e) =>
+										updateField(
+											"companyName",
+											e.target.value
+										)
+									}
+									className="h-12 rounded-xl border-default bg-surface px-4 text-sm outline-none focus:border-gold"
+								/>
+							</div>
+
+							<div className="grid gap-5 md:grid-cols-2">
+								<input
+									type="tel"
+									placeholder="Phone / WhatsApp Number"
+									value={form.phone}
+									onChange={(e) =>
+										updateField("phone", e.target.value)
+									}
 									className="h-12 rounded-xl border-default bg-surface px-4 text-sm outline-none focus:border-gold"
 								/>
 
 								<input
 									type="email"
-									placeholder="Email Address"
+									placeholder="Email Address (Optional)"
+									value={form.email}
+									onChange={(e) =>
+										updateField("email", e.target.value)
+									}
 									className="h-12 rounded-xl border-default bg-surface px-4 text-sm outline-none focus:border-gold"
 								/>
 							</div>
 
-							<input
-								type="tel"
-								placeholder="Phone / WhatsApp Number"
+							<select
+								value={form.service}
+								onChange={(e) =>
+									updateField(
+										"service",
+										e.target.value
+									)
+								}
 								className="h-12 w-full rounded-xl border-default bg-surface px-4 text-sm outline-none focus:border-gold"
-							/>
-
-							<select className="h-12 w-full rounded-xl border-default bg-surface px-4 text-sm text-muted outline-none focus:border-gold">
-								<option>Select Shipping Service</option>
+							>
+								<option value="">
+									Select Shipping Service
+								</option>
 
 								{services.map((service) => (
 									<option key={service}>
@@ -114,49 +204,102 @@ export default function QuoteForm() {
 
 							<div className="grid gap-5 md:grid-cols-2">
 								<input
-									type="text"
 									placeholder="Origin Country"
+									value={form.origin}
+									onChange={(e) =>
+										updateField(
+											"origin",
+											e.target.value
+										)
+									}
 									className="h-12 rounded-xl border-default bg-surface px-4 text-sm outline-none focus:border-gold"
 								/>
 
 								<input
-									type="text"
 									placeholder="Destination Country"
+									value={form.destination}
+									onChange={(e) =>
+										updateField(
+											"destination",
+											e.target.value
+										)
+									}
 									className="h-12 rounded-xl border-default bg-surface px-4 text-sm outline-none focus:border-gold"
 								/>
 							</div>
 
 							<div className="grid gap-5 md:grid-cols-2">
 								<input
-									type="text"
-									placeholder="Cargo Weight / Quantity"
+									placeholder="Estimated Weight (kg)"
+									value={form.weight}
+									onChange={(e) =>
+										updateField(
+											"weight",
+											e.target.value
+										)
+									}
 									className="h-12 rounded-xl border-default bg-surface px-4 text-sm outline-none focus:border-gold"
 								/>
 
 								<input
-									type="text"
-									placeholder="Cargo Type"
+									placeholder="Cargo Description"
+									value={form.cargo}
+									onChange={(e) =>
+										updateField(
+											"cargo",
+											e.target.value
+										)
+									}
 									className="h-12 rounded-xl border-default bg-surface px-4 text-sm outline-none focus:border-gold"
 								/>
 							</div>
 
+							<input
+								type="date"
+								value={form.date}
+								onChange={(e) =>
+									updateField(
+										"date",
+										e.target.value
+									)
+								}
+								className="h-12 w-full rounded-xl border-default bg-surface px-4 text-sm outline-none focus:border-gold"
+							/>
+
 							<textarea
 								rows={5}
-								placeholder="Additional shipment details..."
+								value={form.details}
+								onChange={(e) =>
+									updateField(
+										"details",
+										e.target.value
+									)
+								}
+								placeholder="Special instructions, dimensions, urgency, or additional details..."
 								className="w-full resize-none rounded-xl border-default bg-surface p-4 text-sm outline-none focus:border-gold"
 							/>
 
-							<button
-								type="button"
-								className="group inline-flex items-center gap-2 rounded-full bg-navy px-7 py-3.5 text-sm font-medium text-white transition-all hover:shadow-gold"
-							>
-								Request Quote
+							<div className="flex flex-col gap-3 sm:flex-row">
+								<button
+									type="button"
+									onClick={sendWhatsApp}
+									className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-3.5 text-sm font-medium text-white transition-all hover:shadow-lg"
+								>
+									<MessageCircle className="h-4 w-4" />
+									WhatsApp Quote
+								</button>
 
-								<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-							</button>
-						</form>
+								<button
+									type="button"
+									onClick={sendEmail}
+									className="group inline-flex items-center justify-center gap-2 rounded-full bg-navy px-7 py-3.5 text-sm font-medium text-white transition-all hover:shadow-gold"
+								>
+									Email Quote
+									<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+								</button>
+							</div>
+						</div>
 					</motion.div>
-
 
 					<motion.div
 						initial={{ opacity: 0, x: 30 }}
@@ -178,7 +321,6 @@ export default function QuoteForm() {
 								{company.description}
 							</p>
 						</div>
-
 
 						<div className="space-y-4">
 							{benefits.map((item) => {

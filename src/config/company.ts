@@ -1,138 +1,75 @@
 export const company = {
-    // ==========================================
-    // Company Identity
-    // ==========================================
-    name: "Precious Global Express",
+	name: "Precious Global Express",
+	shortName: "PGE",
+	legalName: "Precious Global Express Limited",
+	website: "https://preciousglobalexpress.netlify.app",
 
-    shortName: "PGE",
+	tagline: "Delivering the World with Speed, Security & Excellence.",
+	slogan: "Your Trusted Global Logistics Partner",
 
-    legalName: "Precious Global Express Limited",
-    website: "https://preciousglobalexpress.com",
+	description:
+		"Precious Global Express is an international logistics and freight forwarding company providing secure, reliable, and cost-effective shipping solutions across air, sea, road, express, frozen, and dry cargo services.",
 
+	founded: "2020",
 
-    tagline: "Delivering the World with Speed, Security & Excellence.",
+	branding: {
+		logo: "/images/logo.png",
+		icon: "/images/logo.png",
+		favicon: "/favicon.ico",
+		appleTouchIcon: "/apple-touch-icon.png",
+		manifest: "/site.webmanifest",
+	},
 
-    slogan: "Your Trusted Global Logistics Partner",
+	contact: {
+		phone: "+234 701 606 3223",
+		whatsapp: "+234 701 606 3223",
+		email: "schocolee978@gmail.com",
+		supportEmail: "",
+		salesEmail: "",
+		careersEmail: "",
+	},
 
-    description:
-        "Precious Global Express is an international logistics and freight forwarding company providing secure, reliable, and cost-effective shipping solutions across air, sea, road, express, frozen, and dry cargo services.",
+	address: {
+		street: "3 Colossus Close, Etal Avenue, Beside NNPC Filling Station",
+		city: "Oregun",
+		state: "Lagos",
+		postalCode: "",
+		country: "Nigeria",
+		full: "3 Etal Avenue, Beside NNPC Filling Station, Off Kudirat Abiola Way, Oregun, Lagos, Nigeria",
+	},
 
-    founded: "2020",
+	businessHours: {
+		monday: "08:00 AM - 06:00 PM",
+		tuesday: "08:00 AM - 06:00 PM",
+		wednesday: "08:00 AM - 06:00 PM",
+		thursday: "08:00 AM - 06:00 PM",
+		friday: "08:00 AM - 06:00 PM",
+		saturday: "09:00 AM - 03:00 PM",
+		sunday: "Closed",
+	},
 
-    // ==========================================
-    // Branding
-    // ==========================================
-    branding: {
-        logo: "/images/logo.png",
+	socials: {
+		facebook: "https://facebook.com/PreciousGlobalExpress",
+		instagram: "https://instagram.com/p.cargoconnect",
+		x: "https://x.com/pcargoconnect",
+		linkedin: "",
+		youtube: "",
+		tiktok: "https://tiktok.com/@p.connects",
+		whatsapp: "https://wa.me/2347016063223",
+	},
 
-        logoLight: "/logo-light.png",
+	theme: {
+		primary: "#0A2E6D",
+		secondary: "#D4AF37",
+		accent: "#C0C0C0",
+		dark: "#0B0F17",
+		light: "#FFFFFF",
+	},
 
-        logoDark: "/logo-dark.png",
-
-        icon: "/images/logo.png",
-
-        favicon: "/favicon.ico",
-
-        appleTouchIcon: "/apple-touch-icon.png",
-
-        manifest: "/site.webmanifest",
-    },
-
-    // ==========================================
-    // Contact Information
-    // ==========================================
-    contact: {
-        phone: "+234 XXX XXX XXXX",
-
-        whatsapp: "+234 XXX XXX XXXX",
-
-        email: "info@preciousglobalexpress.com",
-
-        supportEmail: "support@preciousglobalexpress.com",
-
-        salesEmail: "sales@preciousglobalexpress.com",
-
-        careersEmail: "careers@preciousglobalexpress.com",
-    },
-
-    // ==========================================
-    // Office Address
-    // ==========================================
-    address: {
-        street: "Your Office Address",
-
-        city: "Lagos",
-
-        state: "Lagos State",
-
-        postalCode: "",
-
-        country: "Nigeria",
-
-        full: "Your Office Address, Lagos, Lagos State, Nigeria",
-    },
-
-    // ==========================================
-    // Business Hours
-    // ==========================================
-    businessHours: {
-        monday: "08:00 AM - 06:00 PM",
-
-        tuesday: "08:00 AM - 06:00 PM",
-
-        wednesday: "08:00 AM - 06:00 PM",
-
-        thursday: "08:00 AM - 06:00 PM",
-
-        friday: "08:00 AM - 06:00 PM",
-
-        saturday: "09:00 AM - 03:00 PM",
-
-        sunday: "Closed",
-    },
-
-    // ==========================================
-    // Social Media
-    // ==========================================
-    socials: {
-        facebook: "https://facebook.com/",
-
-        instagram: "https://instagram.com/",
-
-        x: "https://x.com/",
-
-        linkedin: "https://linkedin.com/company/",
-
-        youtube: "https://youtube.com/",
-
-        tiktok: "https://tiktok.com/",
-
-        whatsapp: "https://wa.me/234XXXXXXXXXX",
-    },
-
-    // ==========================================
-    // Theme
-    // ==========================================
-    theme: {
-        primary: "#0A2E6D",
-
-        secondary: "#D4AF37",
-
-        accent: "#C0C0C0",
-
-        dark: "#0B0F17",
-
-        light: "#FFFFFF",
-    },
-
-    // ==========================================
-    // Tracking
-    // ==========================================
-    tracking: {
-        prefix: "PGE",
-
-        example: "PGE2400001",
-    },
+	tracking: {
+		prefix: "PGE",
+		example: "PGE2400001",
+	},
 } as const;
 
 export type Company = typeof company;
