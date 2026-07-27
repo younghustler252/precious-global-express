@@ -23,7 +23,7 @@ export const company = {
 	contact: {
 		phone: "+234 701 606 3223",
 		whatsapp: "+234 701 606 3223",
-		email: "schocolee978@gmail.com",
+		email: "pre.connects@gmail.com",
 		supportEmail: "",
 		salesEmail: "",
 		careersEmail: "",
