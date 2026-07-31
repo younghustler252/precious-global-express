@@ -1,5 +1,5 @@
 import Hero from "@/components/marketing/hero";
-import Services from "@/components/marketing/services";
+import ShippingSolutions from "@/components/marketing/shipping-solutions";
 import About from "@/components/marketing/about";
 import HowItWorks from "@/components/marketing/how-it-works";
 import Partners from "@/components/marketing/partners";
@@ -10,7 +10,7 @@ export default function Home() {
 	return (
 		<>
 			<Hero />
-			<Services />
+			<ShippingSolutions />
 			<About />
 			<HowItWorks />
 			<Partners />
