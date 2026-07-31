@@ -57,7 +57,7 @@ const reveal: Variants = {
 
 export default function WhyChooseUs() {
 	return (
-		<section className="section bg-surface">
+		<section id="why-us" className="section bg-surface">
 			<div className="container-page grid gap-14 lg:grid-cols-2">
 
 				<motion.div
